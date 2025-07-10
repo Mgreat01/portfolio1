@@ -42,6 +42,19 @@
     transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 </style>
 <body class="bg-gray-50">
 </body>
