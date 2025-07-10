@@ -57,5 +57,22 @@
 }
 </style>
 <body class="bg-gray-50">
+    <nav class="fixed top-0 w-full glass-effect z-40 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <div class="text-2xl font-bold text-white neon-text">Portfolio</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-white hover:text-blue-300 transition-all duration-300 relative group">
+                    Accueil
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-300 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <!-- Autres liens -->
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
