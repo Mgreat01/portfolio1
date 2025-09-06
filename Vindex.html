@@ -3,75 +3,324 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | MONGA MBAKA EPHRAIM</title>
-  <meta name="description" content="Portfolio de Monga Mbaka Ephraim - Développeur web et mobile. Backend : Laravel, Adonis, FastAPI. Frontend : Angular, Tailwind. Mobile : Flutter, KivyMD.">
+  <title>Portfolio | MONGA MBAKA EPHRAIM - Développeur Web & Mobile</title>
+  <meta name="description" content="Portfolio professionnel de Monga Mbaka Ephraim - Développeur web et mobile spécialisé en Backend (Laravel, Adonis, FastAPI) et Frontend (Angular, Tailwind).">
   
   <!-- ✅ Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- ✅ Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- ✅ Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    body { scroll-behavior: smooth; }
-    .glass-effect { backdrop-filter: blur(10px); background: rgba(255,255,255,0.1); }
-    .neon-text { text-shadow: 0 0 10px #3b82f6, 0 0 20px #8b5cf6; }
-    .skill-bar { height: 10px; background: linear-gradient(to right, #3b82f6, #8b5cf6); width: 0; transition: width 1.5s ease-out; }
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --dark: #1e293b;
+      --light: #f8fafc;
+    }
+    
+    body {
+      scroll-behavior: smooth;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    .glass-effect { 
+      backdrop-filter: blur(10px); 
+      background: rgba(255, 255, 255, 0.08); 
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    .skill-bar-container {
+      height: 10px;
+      background-color: #e2e8f0;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    .skill-bar {
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      width: 0;
+      transition: width 1.5s ease-out;
+      border-radius: 5px;
+    }
+    
+    .project-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .project-image {
+      transition: transform 0.5s ease;
+      height: 220px;
+      object-fit: cover;
+    }
+    
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover:after {
+      width: 100%;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
+    }
+    
+    .btn-outline {
+      border: 2px solid white;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline:hover {
+      background: white;
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-gray-50 text-gray-800 antialiased">
 
   <!-- Navbar -->
-  <header class="fixed w-full top-0 z-50 bg-white/10 backdrop-blur-md transition-all duration-300">
+  <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
-      <h1 class="text-2xl font-bold text-blue-600">Ephraim Dev</h1>
+      <h1 class="text-2xl font-bold text-blue-600 flex items-center">
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-1 rounded mr-2">
+          <i data-lucide="code" class="w-6 h-6"></i>
+        </span>
+        Ephraim Dev
+      </h1>
+      
       <ul class="hidden md:flex gap-8 font-medium">
-        <li><a href="#about" class="hover:text-blue-600 transition">À propos</a></li>
-        <li><a href="#skills" class="hover:text-blue-600 transition">Compétences</a></li>
-        <li><a href="#projects" class="hover:text-blue-600 transition">Projets</a></li>
-        <li><a href="#contact" class="hover:text-blue-600 transition">Contact</a></li>
+        <li><a href="#about" class="nav-link hover:text-blue-600 transition">À propos</a></li>
+        <li><a href="#skills" class="nav-link hover:text-blue-600 transition">Compétences</a></li>
+        <li><a href="#projects" class="nav-link hover:text-blue-600 transition">Projets</a></li>
+        <li><a href="#contact" class="nav-link hover:text-blue-600 transition">Contact</a></li>
       </ul>
+      
+      <!-- Mobile menu button -->
+      <button class="md:hidden text-gray-600">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
     </nav>
   </header>
 
   <!-- Hero -->
-  <section class="h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white">
-    <h1 class="text-5xl md:text-6xl font-black mb-4">MONGA MBAKA EPHRAIM</h1>
-    <p class="text-xl text-gray-300 mb-8">Développeur Web & Mobile | Backend & Frontend</p>
-    <div class="flex gap-6">
-      <a href="#projects" class="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 rounded-full font-bold hover:shadow-lg transition">Voir mes projets</a>
-      <a href="CV_Ephraim.pdf" download class="border-2 border-white px-8 py-4 rounded-full font-bold hover:bg-white hover:text-gray-900 transition">Télécharger CV</a>
+  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="mb-6">
+        <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
+          <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
+            <span class="text-4xl font-bold">EM</span>
+          </div>
+        </div>
+      </div>
+      
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">MONGA MBAKA EPHRAIM</h1>
+      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto my-6 rounded-full"></div>
+      <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-semibold">Voir mes projets</a>
+        <a href="CV_Ephraim.pdf" download class="btn-outline px-8 py-4 rounded-full font-semibold">Télécharger mon CV</a>
+      </div>
+    </div>
+    
+    <div class="absolute bottom-10 animate-bounce">
+      <a href="#about">
+        <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+      </a>
     </div>
   </section>
 
   <!-- À propos -->
   <section id="about" class="py-24 max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-black text-center mb-12">À propos de moi</h2>
-    <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">
-      Passionné par le développement web et mobile, je conçois des solutions modernes et performantes.
-      J’aime résoudre des problèmes complexes et créer des expériences utilisateurs intuitives.
-    </p>
+    <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">À propos de moi</h2>
+    
+    <div class="grid md:grid-cols-2 gap-16 items-center mt-16">
+      <div>
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" 
+             alt="Ephraim Monga Mbaka" class="rounded-2xl shadow-xl">
+      </div>
+      
+      <div>
+        <p class="text-lg text-gray-600 mb-6">
+          Développeur full-stack passionné par la création d'applications web et mobiles performantes. 
+          Je combine expertise technique et sens créatif pour concevoir des solutions digitales qui 
+          allient élégance et fonctionnalité.
+        </p>
+        
+        <p class="text-lg text-gray-600 mb-8">
+          Titulaire d'une formation en informatique et fort de plusieurs projets personnels et professionnels, 
+          je maîtrise les technologies modernes du développement web et mobile. Curieux et autodidacte, 
+          j'aime continuellement apprendre et relever de nouveaux défis techniques.
+        </p>
+        
+        <div class="flex flex-wrap gap-4">
+          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Laravel</span>
+          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Angular</span>
+          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Flutter</span>
+          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">AdonisJS</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Compétences -->
   <section id="skills" class="py-24 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-4xl font-black text-center mb-12">Compétences</h2>
-      <div class="grid md:grid-cols-3 gap-12">
-        <div class="skill-item bg-white p-8 rounded-2xl shadow-lg">
-          <h3 class="text-xl font-bold mb-4">Backend</h3>
-          <p class="mb-4 text-gray-600">Laravel, AdonisJS, FastAPI</p>
-          <div class="skill-bar" data-width="90%"></div>
+      <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Compétences</h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <!-- Backend -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="server" class="w-8 h-8 text-blue-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Développement Backend</h3>
+          <p class="mb-6 text-gray-600">Création d'APIs robustes et sécurisées, conception de bases de données et développement de logique métier.</p>
+          
+          <div class="mb-2 flex justify-between">
+            <span>Laravel</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="90%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>AdonisJS</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="85%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>FastAPI</span>
+            <span>75%</span>
+          </div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="75%"></div>
+          </div>
         </div>
-        <div class="skill-item bg-white p-8 rounded-2xl shadow-lg">
-          <h3 class="text-xl font-bold mb-4">Frontend</h3>
-          <p class="mb-4 text-gray-600">Angular, TailwindCSS</p>
-          <div class="skill-bar" data-width="85%"></div>
+
+        <!-- Frontend -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="layout" class="w-8 h-8 text-purple-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Développement Frontend</h3>
+          <p class="mb-6 text-gray-600">Conception d'interfaces utilisateur réactives, intuitives et esthétiques avec les frameworks modernes.</p>
+          
+          <div class="mb-2 flex justify-between">
+            <span>Angular</span>
+            <span>85%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="85%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>TailwindCSS</span>
+            <span>90%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="90%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>JavaScript/TypeScript</span>
+            <span>88%</span>
+          </div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="88%"></div>
+          </div>
         </div>
-        <div class="skill-item bg-white p-8 rounded-2xl shadow-lg">
-          <h3 class="text-xl font-bold mb-4">Mobile</h3>
-          <p class="mb-4 text-gray-600">Flutter, KivyMD</p>
-          <div class="skill-bar" data-width="80%"></div>
+
+        <!-- Mobile -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+            <i data-lucide="smartphone" class="w-8 h-8 text-green-600"></i>
+          </div>
+          <h3 class="text-xl font-bold mb-4">Développement Mobile</h3>
+          <p class="mb-6 text-gray-600">Création d'applications mobiles cross-platform performantes avec des interfaces natives.</p>
+          
+          <div class="mb-2 flex justify-between">
+            <span>Flutter</span>
+            <span>80%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="80%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>KivyMD</span>
+            <span>70%</span>
+          </div>
+          <div class="skill-bar-container mb-4">
+            <div class="skill-bar" data-width="70%"></div>
+          </div>
+          
+          <div class="mb-2 flex justify-between">
+            <span>Java</span>
+            <span>25%</span>
+          </div>
+          <div class="skill-bar-container">
+            <div class="skill-bar" data-width="25%"></div>
+          </div>
         </div>
       </div>
     </div>
@@ -79,32 +328,61 @@
 
   <!-- Projets -->
   <section id="projects" class="py-24 max-w-6xl mx-auto px-6">
-    <h2 class="text-4xl font-black text-center mb-16">Mes Projets</h2>
-    <div class="grid lg:grid-cols-3 gap-10">
-      <div class="group bg-white rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500">
-        <img src="https://via.placeholder.com/400x250" alt="Site RO-TG" class="w-full h-64 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-4">Site d’exercices RO & TG</h3>
-          <p class="text-gray-600 mb-6">Plateforme interactive pour s’exercer en Recherche Opérationnelle et Théorie des Graphes.</p>
-          <a href="https://ro-tg.vercel.app/exercices.html" target="_blank" class="block bg-blue-600 text-white py-3 px-6 rounded-full text-center">Voir le site</a>
+    <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Projets</h2>
+    <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mt-4">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+      <!-- Projet 1 -->
+      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" 
+               alt="Site RO-TG" class="project-image w-full">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Site d'exercices RO & TG</h3>
+          <p class="text-gray-600 mb-4">Plateforme interactive pour s'exercer en Recherche Opérationnelle et Théorie des Graphes.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">html</span>
+            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">tailwindcss & css</span>
+            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">JavaScript</span>
+          </div>
+          <a href="https://ro-tg.vercel.app/exercices.html" target="_blank" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition">Voir le projet</a>
         </div>
       </div>
 
-      <div class="group bg-white rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500">
-        <img src="https://via.placeholder.com/400x250" alt="Event Manager" class="w-full h-64 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-4">Site de Gestion d’Événements</h3>
-          <p class="text-gray-600 mb-6">Application pour organiser et gérer des événements, avec interface moderne et responsive.</p>
-          <a href="https://github.com/Mgreat01/eventfront" target="_blank" class="block bg-purple-600 text-white py-3 px-6 rounded-full text-center">Voir sur GitHub</a>
+      <!-- Projet 2 -->
+      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" 
+               alt="Event Manager" class="project-image w-full">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Gestionnaire d'Événements</h3>
+          <p class="text-gray-600 mb-4">Application complète pour organiser et gérer des événements avec interface moderne.</p>
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Angular</span>
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
+          </div>
+          <a href="https://github.com/Mgreat01/eventfront" target="_blank" class="block text-center bg-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-purple-700 transition">Code source</a>
         </div>
       </div>
 
-      <div class="group bg-white rounded-3xl shadow-2xl overflow-hidden hover:scale-105 transition-all duration-500">
-        <img src="https://via.placeholder.com/400x250" alt="Blog" class="w-full h-64 object-cover">
-        <div class="p-8">
-          <h3 class="text-2xl font-bold mb-4">Blog Personnel</h3>
-          <p class="text-gray-600 mb-6">Blog développé avec un système de gestion de contenu simple et efficace.</p>
-          <a href="https://github.com/Mgreat01/projet-git" target="_blank" class="block bg-gray-800 text-white py-3 px-6 rounded-full text-center">Voir sur GitHub</a>
+      <!-- Projet 3 -->
+      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80" 
+               alt="Blog" class="project-image w-full">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Blog Personnel</h3>
+          <p class="text-gray-600 mb-4">Blog développé avec un système de gestion de contenu simple et efficace.</p>
+           <div class="flex flex-wrap gap-2 mb-6">
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Angular</span>
+            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
+          </div>
+          <a href="https://github.com/Mgreat01/projet-git" target="_blank" class="block text-center bg-gray-800 text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-900 transition">Code source</a>
         </div>
       </div>
     </div>
@@ -114,41 +392,133 @@
   <section id="contact" class="py-24 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
       <div>
-        <h2 class="text-4xl font-black mb-8 neon-text">Contactez-moi</h2>
-        <p class="text-lg text-gray-300 mb-6">Transformons vos idées en réalité digitale.</p>
-        <p class="mb-2"><strong>Email :</strong> ephraimmonga5@gmail.com</p>
-        <p class="mb-2"><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
-        <p class="mb-6"><strong>Localisation :</strong> Kinshasa, RDC</p>
+        <h2 class="text-3xl md:text-4xl font-black mb-8">Contactez-moi</h2>
+        <p class="text-lg text-blue-100 mb-8">Je suis disponible pour discuter de vos projets et idées. N'hésitez pas à me contacter !</p>
+        
+        <div class="space-y-4 mb-8">
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
+              <i data-lucide="mail" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="font-medium">Email</p>
+              <p class="text-blue-200">ephraimmonga5@gmail.com</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
+              <i data-lucide="phone" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="font-medium">Téléphone</p>
+              <p class="text-blue-200">+243 XX XXX XXXX</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center">
+            <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <p class="font-medium">Localisation</p>
+              <p class="text-blue-200">Kinshasa, RDC</p>
+            </div>
+          </div>
+        </div>
+        
         <div class="flex gap-4">
-          <a href="https://github.com/Mgreat01" target="_blank" class="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-full hover:bg-gray-700"><i data-lucide="github"></i></a>
-          <a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-full hover:bg-blue-600"><i data-lucide="linkedin"></i></a>
+          <a href="https://github.com/Mgreat01" target="_blank" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="github"></i>
+          </a>
+          <a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="linkedin"></i>
+          </a>
+          <a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="twitter"></i>
+          </a>
         </div>
       </div>
-      <form class="glass-effect p-8 rounded-3xl">
-        <input type="text" placeholder="Votre Nom" class="w-full mb-4 px-4 py-3 bg-white/10 rounded-xl text-white">
-        <input type="email" placeholder="Votre Email" class="w-full mb-4 px-4 py-3 bg-white/10 rounded-xl text-white">
-        <textarea rows="5" placeholder="Votre Message" class="w-full mb-4 px-4 py-3 bg-white/10 rounded-xl text-white"></textarea>
-        <button class="w-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 rounded-xl font-bold hover:scale-105 transition">Envoyer</button>
+      
+      <form class="glass-effect p-8 rounded-2xl">
+        <div class="mb-6">
+          <label for="name" class="block mb-2 font-medium">Votre Nom</label>
+          <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        
+        <div class="mb-6">
+          <label for="email" class="block mb-2 font-medium">Votre Email</label>
+          <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+        
+        <div class="mb-6">
+          <label for="message" class="block mb-2 font-medium">Votre Message</label>
+          <textarea id="message" rows="5" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+        </div>
+        
+        <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition">
+          Envoyer le message
+        </button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 text-center py-6">
-    &copy; 2025 Portfolio - Développé à Kinshasa
+  <footer class="bg-gray-900 text-gray-400 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <h3 class="text-xl font-bold text-white mb-4">Ephraim Dev</h3>
+          <p class="mb-4">Développeur web et mobile passionné, créant des solutions digitales sur mesure.</p>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">Liens rapides</h4>
+          <ul class="space-y-2">
+            <li><a href="#about" class="hover:text-white transition">À propos</a></li>
+            <li><a href="#skills" class="hover:text-white transition">Compétences</a></li>
+            <li><a href="#projects" class="hover:text-white transition">Projets</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h4 class="text-lg font-semibold text-white mb-4">Restons connectés</h4>
+          <div class="flex gap-4">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i data-lucide="github" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i data-lucide="linkedin" class="w-6 h-6"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i data-lucide="twitter" class="w-6 h-6"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+        <p>&copy; 2025 Monga Mbaka Ephraim. Tous droits réservés.</p>
+      </div>
+    </div>
   </footer>
 
   <script>
     lucide.createIcons();
+    
     const skillObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const bars = entry.target.querySelectorAll('.skill-bar');
-          bars.forEach(bar => { bar.style.width = bar.dataset.width; });
+          bars.forEach(bar => { 
+            bar.style.width = bar.dataset.width; 
+          });
         }
       });
     }, { threshold: 0.5 });
-    document.querySelectorAll('.skill-item').forEach(skill => skillObserver.observe(skill));
+    
+    document.querySelectorAll('.bg-white').forEach(skill => skillObserver.observe(skill));
   </script>
 </body>
 </html>
