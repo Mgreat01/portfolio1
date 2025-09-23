@@ -1,48 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | MONGA MBAKA EPHRAIM - Développeur Web & Mobile</title>
-  <meta name="description" content="Portfolio professionnel de Monga Mbaka Ephraim - Développeur web et mobile spécialisé en Backend (Laravel, Adonis, FastAPI) et Frontend (Angular, Tailwind).">
-  
-  <!-- ✅ Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- ✅ Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Portfolio professionnel de Monga Mbaka Ephraim - Développeur web et mobile spécialisé en Backend (Laravel, Adonis, FastAPI) et Frontend (Angular, Tailwind)." />
 
-  <!-- ✅ Lucide Icons -->
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    :root {
+    :root{
       --primary: #2563eb;
-      --primary-dark: #1d4ed8;
       --secondary: #7c3aed;
       --dark: #1e293b;
-      --light: #f8fafc;
     }
-    
-    body {
-      scroll-behavior: smooth;
-      font-family: 'Inter', sans-serif;
+
+    html { scroll-behavior: smooth; /* smooth scroll */ }
+    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+
+    /* keep glass effect */
+    .glass-effect {
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
     }
-    
-    .glass-effect { 
-      backdrop-filter: blur(10px); 
-      background: rgba(255, 255, 255, 0.08); 
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    .section-title {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 3rem;
-    }
-    
+
+    /* section title underline */
+    .section-title { position: relative; display:inline-block; margin-bottom: 2.25rem; }
     .section-title:after {
       content: '';
       position: absolute;
@@ -50,352 +43,312 @@
       left: 0;
       width: 50%;
       height: 4px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
       border-radius: 2px;
     }
-    
-    .skill-bar-container {
-      height: 10px;
-      background-color: #e2e8f0;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-    
+
+    /* skill bars base, no fixed height for responsiveness */
+    .skill-bar-container { height: 10px; background:#e2e8f0; border-radius: 6px; overflow:hidden; }
     .skill-bar {
-      height: 100%;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      width: 0;
-      transition: width 1.5s ease-out;
-      border-radius: 5px;
+      height:100%;
+      width:0;
+      border-radius:6px;
+      transition: width 1.4s cubic-bezier(.2,.8,.2,1);
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
     }
-    
-    .project-card {
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      overflow: hidden;
-      border-radius: 16px;
-    }
-    
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-    
-    .project-image {
-      transition: transform 0.5s ease;
-      height: 220px;
-      object-fit: cover;
-    }
-    
-    .project-card:hover .project-image {
-      transform: scale(1.05);
-    }
-    
-    .nav-link {
-      position: relative;
-    }
-    
+
+    /* project card image transitions: remove fixed height here, use tailwind classes on <img> */
+    .project-card { transition: transform .28s ease, box-shadow .28s ease; border-radius: 16px; overflow:hidden; }
+    .project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 30px -12px rgba(0,0,0,0.15); }
+
+    /* nav underline */
+    .nav-link { position: relative; }
     .nav-link:after {
       content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--primary);
-      transition: width 0.3s ease;
+      position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--primary); transition: width .28s ease;
     }
-    
-    .nav-link:hover:after {
-      width: 100%;
+    .nav-link:hover:after { width:100%; }
+
+    /* small-screen adjustments */
+    @media (max-width: 640px) {
+      .section-title { margin-bottom:1rem; }
+      .section-title:after { bottom:-6px; height:3px; width:40%; }
     }
-    
-    .btn-primary {
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      transition: all 0.3s ease;
-    }
-    
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);
-    }
-    
-    .btn-outline {
-      border: 2px solid white;
-      transition: all 0.3s ease;
-    }
-    
-    .btn-outline:hover {
-      background: white;
-      color: var(--dark);
-      transform: translateY(-2px);
-    }
+
+    /* ensure section anchors do not hide under fixed header */
+    html { scroll-padding-top: 5.25rem; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
   <!-- Navbar -->
   <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
-    <nav class="max-w-7xl mx-auto px-6 flex justify-between items-center h-20">
-      <h1 class="text-2xl font-bold text-blue-600 flex items-center">
-        <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-1 rounded mr-2">
-          <i data-lucide="code" class="w-6 h-6"></i>
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+      <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+        <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-1 rounded">
+          <i data-lucide="code" class="w-5 h-5"></i>
         </span>
         Ephraim Dev
       </h1>
-      
-      <ul class="hidden md:flex gap-8 font-medium">
+
+      <!-- Desktop links -->
+      <ul class="hidden md:flex gap-8 font-medium items-center">
         <li><a href="#about" class="nav-link hover:text-blue-600 transition">À propos</a></li>
         <li><a href="#skills" class="nav-link hover:text-blue-600 transition">Compétences</a></li>
         <li><a href="#projects" class="nav-link hover:text-blue-600 transition">Projets</a></li>
         <li><a href="#contact" class="nav-link hover:text-blue-600 transition">Contact</a></li>
       </ul>
-      
+
       <!-- Mobile menu button -->
-      <button class="md:hidden text-gray-600">
+      <button id="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" class="md:hidden text-gray-600 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </nav>
   </header>
 
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="fixed inset-0 bg-white/97 z-50 hidden">
+    <div class="relative h-full flex flex-col items-center justify-center gap-6">
+      <button id="mobile-close" aria-label="Fermer le menu" class="absolute top-6 right-6 p-2">
+        <i data-lucide="x" class="w-7 h-7"></i>
+      </button>
+
+      <a href="#about" class="text-xl font-semibold mobile-link">À propos</a>
+      <a href="#skills" class="text-xl font-semibold mobile-link">Compétences</a>
+      <a href="#projects" class="text-xl font-semibold mobile-link">Projets</a>
+      <a href="#contact" class="text-xl font-semibold mobile-link">Contact</a>
+
+      <div class="mt-6 flex gap-3">
+        <a href="https://github.com/Mgreat01" target="_blank" class="px-4 py-2 rounded-lg bg-gray-100">GitHub</a>
+        <a href="#" class="px-4 py-2 rounded-lg bg-gray-100">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Hero -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
+  <section class="min-h-[78vh] flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
     <div class="max-w-4xl mx-auto px-6">
       <div class="mb-6">
-        <div class="w-32 h-32 mx-auto mb-8 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
+        <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
           <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-            <span class="text-4xl font-bold">EM</span>
+            <span class="text-3xl sm:text-4xl font-bold">EM</span>
           </div>
         </div>
       </div>
-      
-      <h1 class="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">MONGA MBAKA EPHRAIM</h1>
-      <div class="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto my-6 rounded-full"></div>
-      <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
-      
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#projects" class="btn-primary px-8 py-4 rounded-full font-semibold">Voir mes projets</a>
-        <a href="CV_Ephraim.pdf" download class="btn-outline px-8 py-4 rounded-full font-semibold">Télécharger mon CV</a>
+
+      <h1 class="text-2xl sm:text-3xl md:text-5xl font-black mb-3 leading-tight">MONGA MBAKA EPHRAIM</h1>
+      <div class="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto my-4 rounded-full"></div>
+      <p class="text-base sm:text-lg text-blue-100 mb-8 max-w-xl mx-auto">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="#projects" class="btn-primary inline-block px-6 py-3 rounded-full font-semibold text-white" style="background: linear-gradient(90deg,var(--primary),var(--secondary));">Voir mes projets</a>
+        <a href="CV_Ephraim.pdf" download class="btn-outline inline-block px-6 py-3 rounded-full font-semibold border-2 border-white/30 text-white">Télécharger mon CV</a>
       </div>
     </div>
-    
-    <div class="absolute bottom-10 animate-bounce">
-      <a href="#about">
-        <i data-lucide="chevron-down" class="w-8 h-8 text-white"></i>
+
+    <div class="absolute bottom-6 animate-bounce">
+      <a href="#about" aria-label="Aller à la section À propos">
+        <i data-lucide="chevron-down" class="w-7 h-7 text-white"></i>
       </a>
     </div>
   </section>
 
   <!-- À propos -->
-  <section id="about" class="py-24 max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">À propos de moi</h2>
-    
-    <div class="grid md:grid-cols-2 gap-16 items-center mt-16">
+  <section id="about" class="py-16 sm:py-20 max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">À propos de moi</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10">
       <div>
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" 
-             alt="Ephraim Monga Mbaka" class="rounded-2xl shadow-xl">
+        <img
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+          alt="Ephraim Monga Mbaka"
+          class="w-full rounded-2xl shadow-xl object-cover h-56 sm:h-72 md:h-80"
+          loading="lazy"
+        >
       </div>
-      
+
       <div>
-        <p class="text-lg text-gray-600 mb-6">
-          Développeur full-stack passionné par la création d'applications web et mobiles performantes. 
-          Je combine expertise technique et sens créatif pour concevoir des solutions digitales qui 
-          allient élégance et fonctionnalité.
+        <p class="text-base sm:text-lg text-gray-600 mb-4">
+          Développeur full-stack passionné par la création d'applications web et mobiles performantes.
+          Je combine expertise technique et sens créatif pour concevoir des solutions digitales qui allient élégance et fonctionnalité.
         </p>
-        
-        <p class="text-lg text-gray-600 mb-8">
-          Titulaire d'une formation en informatique et fort de plusieurs projets personnels et professionnels, 
-          je maîtrise les technologies modernes du développement web et mobile. Curieux et autodidacte, 
-          j'aime continuellement apprendre et relever de nouveaux défis techniques.
+
+        <p class="text-base sm:text-lg text-gray-600 mb-6">
+          Titulaire d'une formation en informatique et fort de plusieurs projets personnels et professionnels,
+          je maîtrise les technologies modernes du développement web et mobile. Curieux et autodidacte, j'aime continuellement apprendre et relever de nouveaux défis techniques.
         </p>
-        
-        <div class="flex flex-wrap gap-4">
-          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Laravel</span>
-          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Angular</span>
-          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">Flutter</span>
-          <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full font-medium">AdonisJS</span>
+
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium text-sm">Laravel</span>
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium text-sm">Angular</span>
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium text-sm">Flutter</span>
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium text-sm">AdonisJS</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Compétences -->
-  <section id="skills" class="py-24 bg-gray-100">
+  <section id="skills" class="py-16 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Compétences</h2>
-      
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Compétences</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         <!-- Backend -->
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-          <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-            <i data-lucide="server" class="w-8 h-8 text-blue-600"></i>
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="server" class="w-6 h-6 text-blue-600"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4">Développement Backend</h3>
-          <p class="mb-6 text-gray-600">Création d'APIs robustes et sécurisées, conception de bases de données et développement de logique métier.</p>
-          
-          <div class="mb-2 flex justify-between">
-            <span>Laravel</span>
-            <span>90%</span>
+          <h3 class="text-lg font-bold mb-2">Développement Backend</h3>
+          <p class="mb-4 text-gray-600">Création d'APIs robustes et sécurisées, conception de bases de données et développement de logique métier.</p>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>Laravel</span><span>90%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="90%"></div>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="90%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>AdonisJS</span><span>85%</span>
           </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>AdonisJS</span>
-            <span>85%</span>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="85%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>FastAPI</span><span>75%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="85%"></div>
-          </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>FastAPI</span>
-            <span>75%</span>
-          </div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-width="75%"></div>
-          </div>
+          <div class="skill-bar-container"><div class="skill-bar" data-width="75%"></div></div>
         </div>
 
         <!-- Frontend -->
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-          <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-            <i data-lucide="layout" class="w-8 h-8 text-purple-600"></i>
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="layout" class="w-6 h-6 text-purple-600"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4">Développement Frontend</h3>
-          <p class="mb-6 text-gray-600">Conception d'interfaces utilisateur réactives, intuitives et esthétiques avec les frameworks modernes.</p>
-          
-          <div class="mb-2 flex justify-between">
-            <span>Angular</span>
-            <span>85%</span>
+          <h3 class="text-lg font-bold mb-2">Développement Frontend</h3>
+          <p class="mb-4 text-gray-600">Conception d'interfaces utilisateur réactives, intuitives et esthétiques avec les frameworks modernes.</p>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>Angular</span><span>85%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="85%"></div>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="85%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>TailwindCSS</span><span>90%</span>
           </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>TailwindCSS</span>
-            <span>90%</span>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="90%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>JavaScript/TypeScript</span><span>88%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="90%"></div>
-          </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>JavaScript/TypeScript</span>
-            <span>88%</span>
-          </div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-width="88%"></div>
-          </div>
+          <div class="skill-bar-container"><div class="skill-bar" data-width="88%"></div></div>
         </div>
 
         <!-- Mobile -->
-        <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
-          <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center mb-6">
-            <i data-lucide="smartphone" class="w-8 h-8 text-green-600"></i>
+        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
+          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
+            <i data-lucide="smartphone" class="w-6 h-6 text-green-600"></i>
           </div>
-          <h3 class="text-xl font-bold mb-4">Développement Mobile</h3>
-          <p class="mb-6 text-gray-600">Création d'applications mobiles cross-platform performantes avec des interfaces natives.</p>
-          
-          <div class="mb-2 flex justify-between">
-            <span>Flutter</span>
-            <span>80%</span>
+          <h3 class="text-lg font-bold mb-2">Développement Mobile</h3>
+          <p class="mb-4 text-gray-600">Création d'applications mobiles cross-platform performantes avec des interfaces natives.</p>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>Flutter</span><span>80%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="80%"></div>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="80%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>KivyMD</span><span>70%</span>
           </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>KivyMD</span>
-            <span>70%</span>
+          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="70%"></div></div>
+
+          <div class="mb-3 flex justify-between text-sm">
+            <span>Java</span><span>25%</span>
           </div>
-          <div class="skill-bar-container mb-4">
-            <div class="skill-bar" data-width="70%"></div>
-          </div>
-          
-          <div class="mb-2 flex justify-between">
-            <span>Java</span>
-            <span>25%</span>
-          </div>
-          <div class="skill-bar-container">
-            <div class="skill-bar" data-width="25%"></div>
-          </div>
+          <div class="skill-bar-container"><div class="skill-bar" data-width="25%"></div></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Projets -->
-  <section id="projects" class="py-24 max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Projets</h2>
-    <p class="text-lg text-gray-600 text-center max-w-2xl mx-auto mt-4">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+  <section id="projects" class="py-16 max-w-6xl mx-auto px-6">
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Projets</h2>
+    <p class="text-base sm:text-lg text-gray-600 text-center max-w-2xl mx-auto mt-2">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
       <!-- Projet 1 -->
       <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
         <div class="overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80" 
-               alt="Site RO-TG" class="project-image w-full">
+          <img src="graph.png"
+            alt="Site RO-TG"
+            class="w-full object-cover h-44 sm:h-52 md:h-56"
+            loading="lazy"
+          />
+          />
         </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Site d'exercices RO & TG</h3>
-          <p class="text-gray-600 mb-4">Plateforme interactive pour s'exercer en Recherche Opérationnelle et Théorie des Graphes.</p>
-          <div class="flex flex-wrap gap-2 mb-6">
+        <div class="p-4 sm:p-6">
+          <h3 class="text-lg font-bold mb-1">Site d'exercices RO & TG</h3>
+          <p class="text-gray-600 mb-3 text-sm">Plateforme interactive pour s'exercer en Recherche Opérationnelle et Théorie des Graphes.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">html</span>
-            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">tailwindcss & css</span>
+            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">tailwindcss</span>
             <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">JavaScript</span>
           </div>
-          <a href="https://ro-tg.vercel.app/exercices.html" target="_blank" class="block text-center bg-blue-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-blue-700 transition">Voir le projet</a>
+          <a href="https://ro-tg.vercel.app/exercices.html" target="_blank" class="block text-center bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition">Voir le projet</a>
         </div>
       </div>
 
       <!-- Projet 2 -->
       <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
         <div class="overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80" 
-               alt="Event Manager" class="project-image w-full">
+          <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80"
+               alt="Event Manager"
+               class="w-full object-cover h-44 sm:h-52 md:h-56"
+               loading="lazy"
+          />
         </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Gestionnaire d'Événements</h3>
-          <p class="text-gray-600 mb-4">Application complète pour organiser et gérer des événements avec interface moderne.</p>
-          <div class="flex flex-wrap gap-2 mb-6">
+        <div class="p-4 sm:p-6">
+          <h3 class="text-lg font-bold mb-1">Gestionnaire d'Événements</h3>
+          <p class="text-gray-600 mb-3 text-sm">Application complète pour organiser et gérer des événements avec interface moderne.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Angular</span>
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
           </div>
-          <a href="https://github.com/Mgreat01/eventfront" target="_blank" class="block text-center bg-purple-600 text-white py-2 px-4 rounded-lg font-medium hover:bg-purple-700 transition">Code source</a>
+          <a href="https://github.com/Mgreat01/eventfront" target="_blank" class="block text-center bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700 transition">Code source</a>
         </div>
       </div>
 
       <!-- Projet 3 -->
       <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
         <div class="overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1772&q=80" 
-               alt="Blog" class="project-image w-full">
+          <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1772&q=80"
+               alt="Blog"
+               class="w-full object-cover h-44 sm:h-52 md:h-56"
+               loading="lazy"
+          />
         </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold mb-2">Blog Personnel</h3>
-          <p class="text-gray-600 mb-4">Blog développé avec un système de gestion de contenu simple et efficace.</p>
-           <div class="flex flex-wrap gap-2 mb-6">
+        <div class="p-4 sm:p-6">
+          <h3 class="text-lg font-bold mb-1">Blog Personnel</h3>
+          <p class="text-gray-600 mb-3 text-sm">Blog développé avec un système de gestion de contenu simple et efficace.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Angular</span>
             <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
           </div>
-          <a href="https://github.com/Mgreat01/projet-git" target="_blank" class="block text-center bg-gray-800 text-white py-2 px-4 rounded-lg font-medium hover:bg-gray-900 transition">Code source</a>
+          <a href="https://github.com/Mgreat01/projet-git" target="_blank" class="block text-center bg-gray-800 text-white py-2 rounded-lg font-medium hover:bg-gray-900 transition">Code source</a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-24 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+  <section id="contact" class="py-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
       <div>
-        <h2 class="text-3xl md:text-4xl font-black mb-8">Contactez-moi</h2>
-        <p class="text-lg text-blue-100 mb-8">Je suis disponible pour discuter de vos projets et idées. N'hésitez pas à me contacter !</p>
-        
-        <div class="space-y-4 mb-8">
+        <h2 class="text-2xl md:text-3xl font-black mb-4">Contactez-moi</h2>
+        <p class="text-base text-blue-100 mb-6">Je suis disponible pour discuter de vos projets et idées. N'hésitez pas à me contacter !</p>
+
+        <div class="space-y-4 mb-6">
           <div class="flex items-center">
             <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
               <i data-lucide="mail" class="w-5 h-5"></i>
@@ -405,7 +358,7 @@
               <p class="text-blue-200">ephraimmonga5@gmail.com</p>
             </div>
           </div>
-          
+
           <div class="flex items-center">
             <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
               <i data-lucide="phone" class="w-5 h-5"></i>
@@ -415,7 +368,7 @@
               <p class="text-blue-200">+243 XX XXX XXXX</p>
             </div>
           </div>
-          
+
           <div class="flex items-center">
             <div class="w-10 h-10 bg-blue-700 rounded-lg flex items-center justify-center mr-4">
               <i data-lucide="map-pin" class="w-5 h-5"></i>
@@ -426,36 +379,36 @@
             </div>
           </div>
         </div>
-        
-        <div class="flex gap-4">
-          <a href="https://github.com/Mgreat01" target="_blank" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
-            <i data-lucide="github"></i>
+
+        <div class="flex gap-3">
+          <a href="https://github.com/Mgreat01" target="_blank" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="github" class="w-5 h-5"></i>
           </a>
-          <a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
-            <i data-lucide="linkedin"></i>
+          <a href="#" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="linkedin" class="w-5 h-5"></i>
           </a>
-          <a href="#" class="w-12 h-12 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
-            <i data-lucide="twitter"></i>
+          <a href="#" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+            <i data-lucide="twitter" class="w-5 h-5"></i>
           </a>
         </div>
       </div>
-      
-      <form class="glass-effect p-8 rounded-2xl">
-        <div class="mb-6">
+
+      <form class="glass-effect p-6 sm:p-8 rounded-2xl w-full">
+        <div class="mb-4">
           <label for="name" class="block mb-2 font-medium">Votre Nom</label>
-          <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
-        
-        <div class="mb-6">
+
+        <div class="mb-4">
           <label for="email" class="block mb-2 font-medium">Votre Email</label>
-          <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
-        
-        <div class="mb-6">
+
+        <div class="mb-4">
           <label for="message" class="block mb-2 font-medium">Votre Message</label>
           <textarea id="message" rows="5" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
-        
+
         <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition">
           Envoyer le message
         </button>
@@ -464,16 +417,16 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 py-12">
+  <footer class="bg-gray-900 text-gray-400 py-10">
     <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
         <div>
-          <h3 class="text-xl font-bold text-white mb-4">Ephraim Dev</h3>
-          <p class="mb-4">Développeur web et mobile passionné, créant des solutions digitales sur mesure.</p>
+          <h3 class="text-xl font-bold text-white mb-3">Ephraim Dev</h3>
+          <p class="mb-2">Développeur web et mobile passionné, créant des solutions digitales sur mesure.</p>
         </div>
-        
+
         <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Liens rapides</h4>
+          <h4 class="text-lg font-semibold text-white mb-3">Liens rapides</h4>
           <ul class="space-y-2">
             <li><a href="#about" class="hover:text-white transition">À propos</a></li>
             <li><a href="#skills" class="hover:text-white transition">Compétences</a></li>
@@ -481,44 +434,85 @@
             <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
           </ul>
         </div>
-        
+
         <div>
-          <h4 class="text-lg font-semibold text-white mb-4">Restons connectés</h4>
-          <div class="flex gap-4">
-            <a href="#" class="text-gray-400 hover:text-white transition">
-              <i data-lucide="github" class="w-6 h-6"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition">
-              <i data-lucide="linkedin" class="w-6 h-6"></i>
-            </a>
-            <a href="#" class="text-gray-400 hover:text-white transition">
-              <i data-lucide="twitter" class="w-6 h-6"></i>
-            </a>
+          <h4 class="text-lg font-semibold text-white mb-3">Restons connectés</h4>
+          <div class="flex gap-4 justify-center md:justify-start">
+            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="github" class="w-6 h-6"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
           </div>
         </div>
       </div>
-      
-      <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+
+      <div class="border-t border-gray-800 mt-8 pt-6 text-center">
         <p>&copy; 2025 Monga Mbaka Ephraim. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script>
+    // icons
     lucide.createIcons();
-    
-    const skillObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const bars = entry.target.querySelectorAll('.skill-bar');
-          bars.forEach(bar => { 
-            bar.style.width = bar.dataset.width; 
-          });
-        }
+
+    /* ---------- Mobile menu behavior ---------- */
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+
+    function openMobileMenu() {
+      mobileMenu.classList.remove('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+      // prevent body scroll when menu open
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      mobileMenu.classList.add('hidden');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+
+    // close menu when clicking a mobile link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMobileMenu();
       });
-    }, { threshold: 0.5 });
-    
-    document.querySelectorAll('.bg-white').forEach(skill => skillObserver.observe(skill));
+    });
+
+    // close mobile menu on escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMobileMenu();
+    });
+
+    /* ---------- Skills animation: observe the skills section ---------- */
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+      const skillObserver = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            document.querySelectorAll('.skill-bar').forEach(bar => {
+              const w = bar.getAttribute('data-width') || '70%';
+              bar.style.width = w;
+            });
+            obs.unobserve(entry.target); // animate once
+          }
+        });
+      }, { threshold: 0.18 });
+
+      skillObserver.observe(skillsSection);
+    }
+
+    /* ---------- Small improvement: close mobile menu when clicking outside content (optional) ---------- */
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMobileMenu();
+    });
+
+    /* ---------- Smoothly collapse project images on very narrow screens if needed ---------- */
+    // (No extra JS required — handled with responsive img classes)
   </script>
 </body>
 </html>
