@@ -17,97 +17,40 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <style>
-    :root{
-      --primary: #2563eb;
-      --secondary: #7c3aed;
-      --dark: #1e293b;
-    }
-
-    html { scroll-behavior: smooth; /* smooth scroll */ }
-    body { font-family: 'Inter', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-
-    /* keep glass effect */
-    .glass-effect {
-      backdrop-filter: blur(8px);
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    /* section title underline */
-    .section-title { position: relative; display:inline-block; margin-bottom: 2.25rem; }
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 50%;
-      height: 4px;
-      background: linear-gradient(90deg,var(--primary),var(--secondary));
-      border-radius: 2px;
-    }
-
-    /* skill bars base, no fixed height for responsiveness */
-    .skill-bar-container { height: 10px; background:#e2e8f0; border-radius: 6px; overflow:hidden; }
-    .skill-bar {
-      height:100%;
-      width:0;
-      border-radius:6px;
-      transition: width 1.4s cubic-bezier(.2,.8,.2,1);
-      background: linear-gradient(90deg,var(--primary),var(--secondary));
-    }
-
-    /* project card image transitions: remove fixed height here, use tailwind classes on <img> */
-    .project-card { transition: transform .28s ease, box-shadow .28s ease; border-radius: 16px; overflow:hidden; }
-    .project-card:hover { transform: translateY(-6px); box-shadow: 0 18px 30px -12px rgba(0,0,0,0.15); }
-
-    /* nav underline */
-    .nav-link { position: relative; }
-    .nav-link:after {
-      content: '';
-      position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--primary); transition: width .28s ease;
-    }
-    .nav-link:hover:after { width:100%; }
-
-    /* small-screen adjustments */
-    @media (max-width: 640px) {
-      .section-title { margin-bottom:1rem; }
-      .section-title:after { bottom:-6px; height:3px; width:40%; }
-    }
-
-    /* ensure section anchors do not hide under fixed header */
-    html { scroll-padding-top: 5.25rem; }
-  </style>
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
 
+  <a class="skip-link" href="#main">Aller au contenu</a>
+  <noscript><p class="p-4">Activez JavaScript pour consulter les projets et les indicateurs. Le CV et les coordonnées restent accessibles.</p></noscript>
   <!-- Navbar -->
   <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
     <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
-      <h1 class="text-2xl font-bold text-blue-600 flex items-center gap-2">
+      <a href="#main" aria-label="Ephraim Dev, accueil" class="text-2xl font-bold text-blue-600 flex items-center gap-2">
         <span class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-1 rounded">
           <i data-lucide="code" class="w-5 h-5"></i>
         </span>
         Ephraim Dev
-      </h1>
+      </a>
 
       <!-- Desktop links -->
       <ul class="hidden md:flex gap-8 font-medium items-center">
         <li><a href="#about" class="nav-link hover:text-blue-600 transition">À propos</a></li>
         <li><a href="#skills" class="nav-link hover:text-blue-600 transition">Compétences</a></li>
         <li><a href="#projects" class="nav-link hover:text-blue-600 transition">Projets</a></li>
+        <li><a href="#dashboard" class="nav-link">Tableau de bord</a></li>
         <li><a href="#contact" class="nav-link hover:text-blue-600 transition">Contact</a></li>
       </ul>
 
       <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" class="md:hidden text-gray-600 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
+      <button id="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden text-gray-600 p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300">
         <i data-lucide="menu" class="w-6 h-6"></i>
       </button>
     </nav>
   </header>
 
   <!-- Mobile menu overlay -->
-  <div id="mobile-menu" class="fixed inset-0 bg-white/97 z-50 hidden">
+  <div id="mobile-menu" class="fixed inset-0 bg-white z-50 hidden">
     <div class="relative h-full flex flex-col items-center justify-center gap-6">
       <button id="mobile-close" aria-label="Fermer le menu" class="absolute top-6 right-6 p-2">
         <i data-lucide="x" class="w-7 h-7"></i>
@@ -116,17 +59,20 @@
       <a href="#about" class="text-xl font-semibold mobile-link">À propos</a>
       <a href="#skills" class="text-xl font-semibold mobile-link">Compétences</a>
       <a href="#projects" class="text-xl font-semibold mobile-link">Projets</a>
+      <a href="#dashboard" class="text-xl font-semibold mobile-link">Tableau de bord</a>
+      <a href="#profiles" class="text-xl font-semibold mobile-link">Profils</a>
       <a href="#contact" class="text-xl font-semibold mobile-link">Contact</a>
 
       <div class="mt-6 flex gap-3">
-        <a href="https://github.com/Mgreat01" target="_blank" class="px-4 py-2 rounded-lg bg-gray-100">GitHub</a>
-        <a href="#" class="px-4 py-2 rounded-lg bg-gray-100">LinkedIn</a>
+        <a href="https://github.com/Mgreat01" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-gray-100">GitHub</a>
+        <a href="https://www.linkedin.com/in/ephraim%20monga" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-gray-100">LinkedIn</a>
       </div>
     </div>
   </div>
 
+  <main id="main">
   <!-- Hero -->
-  <section class="min-h-[78vh] flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
+  <section class="hero relative min-h-[78vh] flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
     <div class="max-w-4xl mx-auto px-6">
       <div class="mb-6">
         <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
@@ -136,13 +82,14 @@
         </div>
       </div>
 
+      <p class="eyebrow">KINSHASA · DÉVELOPPEMENT FULL-STACK</p>
       <h1 class="text-2xl sm:text-3xl md:text-5xl font-black mb-3 leading-tight">MONGA MBAKA EPHRAIM</h1>
       <div class="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto my-4 rounded-full"></div>
       <p class="text-base sm:text-lg text-blue-100 mb-8 max-w-xl mx-auto">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
 
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
         <a href="#projects" class="btn-primary inline-block px-6 py-3 rounded-full font-semibold text-white" style="background: linear-gradient(90deg,var(--primary),var(--secondary));">Voir mes projets</a>
-        <a href="ECV.pdf" download class="btn-outline inline-block px-6 py-3 rounded-full font-semibold border-2 border-white/30 text-white">Télécharger mon CV</a>
+        <a href="assets/cv-ephraim-monga.pdf" download class="btn-outline inline-block px-6 py-3 rounded-full font-semibold border-2 border-white/30 text-white">Télécharger mon CV</a>
       </div>
     </div>
 
@@ -158,11 +105,7 @@
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">À propos de moi</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10">
-      <div>
-        <img
-        
-        >
-      </div>
+      <aside class="profile-note"><span class="eyebrow">DU BESOIN À L’APPLICATION</span><h3>Web, mobile<br>et côté serveur.</h3><p>Basé à Kinshasa · RDC</p><p>Projets autonomes, collaboratifs et freelance.</p><a href="assets/cv-ephraim-monga.pdf" download>Mon parcours en PDF ↗</a></aside>
 
       <div>
         <p class="text-base sm:text-lg text-gray-600 mb-4">
@@ -171,8 +114,7 @@
         </p>
 
         <p class="text-base sm:text-lg text-gray-600 mb-6">
-          Titulaire d'une formation en informatique et fort de plusieurs projets personnels et professionnels,
-          je maîtrise les technologies modernes du développement web et mobile. Curieux et autodidacte, j'aime continuellement apprendre et relever de nouveaux défis techniques.
+          Diplômé d’un bac+3 en informatique à l’UNIKIN (2022–2025), j’ai suivi des parcours à Orange Digital Center. Développeur web et mobile chez Ngazone depuis 2026, j’interviens aussi sur des projets personnels et freelance depuis 2024.
         </p>
 
         <div class="flex flex-wrap gap-3">
@@ -185,84 +127,17 @@
     </div>
   </section>
 
+  <section id="dashboard" class="dashboard max-w-6xl mx-auto px-6 py-16" aria-labelledby="dashboard-title">
+    <div class="section-heading"><div><p class="eyebrow">LE PORTFOLIO EN CLAIR</p><h2 id="dashboard-title" class="text-3xl font-black">Tableau de bord</h2></div><p>Un aperçu des contenus présentés ici.</p></div>
+    <div id="portfolio-stats" class="stats-grid"></div>
+    <div class="completion-panel"><div><h3>Complétude du portfolio</h3><p id="completion-description"></p><progress id="completion-progress" max="100" value="0">0 %</progress></div><details><summary>Comment le score est-il calculé ?</summary><ul id="completion-criteria"></ul><p>Ce score mesure les contenus renseignés, pas un niveau d’expertise ni l’activité sur les plateformes.</p></details></div>
+  </section>
   <!-- Compétences -->
   <section id="skills" class="py-16 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Compétences</h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        <!-- Backend -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
-          <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="server" class="w-6 h-6 text-blue-600"></i>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Développement Backend</h3>
-          <p class="mb-4 text-gray-600">Création d'APIs robustes et sécurisées, conception de bases de données et développement de logique métier.</p>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>Laravel</span><span>90%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="90%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>AdonisJS</span><span>85%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="85%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>SpringBoot</span><span>45%</span>
-          </div>
-          <div class="skill-bar-container"><div class="skill-bar" data-width="45%"></div></div>
-        </div>
-
-        <!-- Frontend -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
-          <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="layout" class="w-6 h-6 text-purple-600"></i>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Développement Frontend</h3>
-          <p class="mb-4 text-gray-600">Conception d'interfaces utilisateur réactives, intuitives et esthétiques avec les frameworks modernes.</p>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>Angular</span><span>85%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="85%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>TailwindCSS</span><span>90%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="90%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>JavaScript/TypeScript</span><span>88%</span>
-          </div>
-          <div class="skill-bar-container"><div class="skill-bar" data-width="88%"></div></div>
-        </div>
-
-        <!-- Mobile -->
-        <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg">
-          <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4">
-            <i data-lucide="smartphone" class="w-6 h-6 text-green-600"></i>
-          </div>
-          <h3 class="text-lg font-bold mb-2">Développement Mobile</h3>
-          <p class="mb-4 text-gray-600">Création d'applications mobiles cross-platform performantes avec des interfaces natives.</p>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>Flutter</span><span>80%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="80%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>KivyMD</span><span>20%</span>
-          </div>
-          <div class="skill-bar-container mb-4"><div class="skill-bar" data-width="20%"></div></div>
-
-          <div class="mb-3 flex justify-between text-sm">
-            <span>Java</span><span>15%</span>
-          </div>
-          <div class="skill-bar-container"><div class="skill-bar" data-width="15%"></div></div>
-        </div>
-      </div>
+      <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div>
     </div>
   </section>
 
@@ -271,75 +146,10 @@
     <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Projets</h2>
     <p class="text-base sm:text-lg text-gray-600 text-center max-w-2xl mx-auto mt-2">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-      <!-- Projet 1 -->
-      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="overflow-hidden">
-          <img src="graph.png"
-            alt="Site RO-TG"
-            class="w-full object-cover h-44 sm:h-52 md:h-56"
-            loading="lazy"
-          />
-          />
-        </div>
-        <div class="p-4 sm:p-6">
-          <h3 class="text-lg font-bold mb-1">Site d'exercices RO & TG</h3>
-          <p class="text-gray-600 mb-3 text-sm">Plateforme interactive pour s'exercer en Recherche Opérationnelle et Théorie des Graphes.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">html</span>
-            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">tailwindcss</span>
-            <span class="text-xs font-medium bg-blue-100 text-blue-800 px-2 py-1 rounded">JavaScript</span>
-          </div>
-          <a href="https://ro-tg.vercel.app/exercices.html" target="_blank" class="block text-center bg-blue-600 text-white py-2 rounded-lg font-medium hover:bg-blue-700 transition">Voir le projet</a>
-        </div>
-      </div>
-
-      <!-- Projet 2 -->
-      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="overflow-hidden">
-          <img src="eventspot.png"
-            alt="Site RO-TG"
-            class="w-full object-cover h-44 sm:h-52 md:h-56"
-            loading="lazy"
-          />
-        </div>
-        <div class="p-4 sm:p-6">
-          <h3 class="text-lg font-bold mb-1">Gestionnaire d'Événements</h3>
-          <p class="text-gray-600 mb-3 text-sm">Application complète pour organiser et gérer des événements avec interface moderne.</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Angular</span>
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
-          </div>
-          <a href="https://github.com/Mgreat01/eventfront" target="_blank" class="block text-center bg-purple-600 text-white py-2 rounded-lg font-medium hover:bg-purple-700 transition">Code source</a>
-        </div>
-      </div>
-
-      <!-- Projet 3 -->
-      <div class="project-card bg-white rounded-2xl shadow-lg overflow-hidden">
-        <div class="overflow-hidden">
-       <img src="evMob.png"
-     alt="Site RO-TG"
-     class="w-full h-44 sm:h-52 md:h-56 object-contain"
-     loading="lazy"
-/>
-
-
-        </div>
-        <div class="p-4 sm:p-6">
-          <h3 class="text-lg font-bold mb-1">Gestionnaire d'Événements ( mobile )</h3>
-          <p class="text-gray-600 mb-3 text-sm">Application complète pour organiser et gérer des événements version mobile</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Flutter </span>
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">Laravel</span>
-            <span class="text-xs font-medium bg-purple-100 text-purple-800 px-2 py-1 rounded">MySQL</span>
-          </div>
-          <a href="https://github.com/Mgreat01/projet-git" target="_blank" class="block text-center bg-gray-800 text-white py-2 rounded-lg font-medium hover:bg-gray-900 transition">Code source</a>
-        </div>
-      </div>
-    </div>
+    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"></div>
   </section>
 
+  <section id="profiles" class="max-w-6xl mx-auto px-6 py-16"><p class="eyebrow">RETROUVONS-NOUS</p><h2 class="text-3xl font-black">Mes profils professionnels</h2><p class="section-intro">Code, parcours et liens utiles réunis au même endroit.</p><div id="profiles-grid" class="profiles-grid"></div><p class="muted">Liens externes uniquement : aucune synchronisation automatique ni accès aux comptes.</p></section>
   <!-- Contact -->
   <section id="contact" class="py-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -354,7 +164,7 @@
             </div>
             <div>
               <p class="font-medium">Email</p>
-              <p class="text-blue-200">ephraimmonga5@gmail.com</p>
+              <a class="text-blue-200" href="mailto:ephraimmonga5@gmail.com">ephraimmonga5@gmail.com</a>
             </div>
           </div>
 
@@ -364,7 +174,7 @@
             </div>
             <div>
               <p class="font-medium">Téléphone</p>
-              <p class="text-blue-200">+243 97 89 71 330</p>
+              <p class="text-blue-200">0 846 82 85 84</p>
             </div>
           </div>
 
@@ -380,41 +190,41 @@
         </div>
 
         <div class="flex gap-3">
-          <a href="https://github.com/Mgreat01" target="_blank" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+          <a aria-label="GitHub" href="https://github.com/Mgreat01" target="_blank" rel="noopener noreferrer" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
             <i data-lucide="github" class="w-5 h-5"></i>
           </a>
-          <a href="#" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
+          <a href="https://www.linkedin.com/in/ephraim%20monga" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
             <i data-lucide="linkedin" class="w-5 h-5"></i>
           </a>
-          <a href="#" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
-            <i data-lucide="twitter" class="w-5 h-5"></i>
-          </a>
+          <span class="muted">Autres profils à renseigner</span>
         </div>
       </div>
 
-      <form class="glass-effect p-6 sm:p-8 rounded-2xl w-full">
+      <form id="contact-form" class="glass-effect p-6 sm:p-8 rounded-2xl w-full">
         <div class="mb-4">
           <label for="name" class="block mb-2 font-medium">Votre Nom</label>
-          <input type="text" id="name" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input type="text" id="name" name="name" autocomplete="name" required maxlength="100" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
 
         <div class="mb-4">
           <label for="email" class="block mb-2 font-medium">Votre Email</label>
-          <input type="email" id="email" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          <input type="email" id="email" name="email" autocomplete="email" required maxlength="254" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         </div>
 
         <div class="mb-4">
           <label for="message" class="block mb-2 font-medium">Votre Message</label>
-          <textarea id="message" rows="5" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+          <textarea id="message" name="message" required maxlength="5000" rows="5" class="w-full px-4 py-3 bg-white/10 rounded-lg text-white placeholder-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
         </div>
 
         <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-purple-600 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-purple-700 transition">
-          Envoyer le message
+          Préparer mon email
         </button>
+        <p class="mt-4 text-sm text-blue-100">Ce formulaire ouvre votre application de messagerie. Vous pourrez relire et envoyer votre email. Aucun message n’est envoyé par le site.</p><p id="contact-status" role="status" class="mt-3"></p>
       </form>
     </div>
   </section>
 
+  </main>
   <!-- Footer -->
   <footer class="bg-gray-900 text-gray-400 py-10">
     <div class="max-w-6xl mx-auto px-6">
@@ -437,81 +247,20 @@
         <div>
           <h4 class="text-lg font-semibold text-white mb-3">Restons connectés</h4>
           <div class="flex gap-4 justify-center md:justify-start">
-            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="github" class="w-6 h-6"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+            <a href="https://github.com/Mgreat01" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-400 hover:text-white transition"><i data-lucide="github" class="w-6 h-6"></i></a>
+            <a href="https://www.linkedin.com/in/ephraim%20monga" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+            <span class="muted">Autres profils à renseigner</span>
           </div>
         </div>
       </div>
 
       <div class="border-t border-gray-800 mt-8 pt-6 text-center">
-        <p>&copy; 2025 Monga Mbaka Ephraim. Tous droits réservés.</p>
+        <p>&copy; <span id="year">2026</span> Monga Mbaka Ephraim. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script>
-    // icons
-    lucide.createIcons();
-
-    /* ---------- Mobile menu behavior ---------- */
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileClose = document.getElementById('mobile-close');
-
-    function openMobileMenu() {
-      mobileMenu.classList.remove('hidden');
-      mobileMenuBtn.setAttribute('aria-expanded', 'true');
-      // prevent body scroll when menu open
-      document.body.style.overflow = 'hidden';
-    }
-    function closeMobileMenu() {
-      mobileMenu.classList.add('hidden');
-      mobileMenuBtn.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    mobileMenuBtn.addEventListener('click', openMobileMenu);
-    mobileClose.addEventListener('click', closeMobileMenu);
-
-    // close menu when clicking a mobile link
-    document.querySelectorAll('.mobile-link').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
-
-    // close mobile menu on escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) closeMobileMenu();
-    });
-
-    /* ---------- Skills animation: observe the skills section ---------- */
-    const skillsSection = document.getElementById('skills');
-    if (skillsSection) {
-      const skillObserver = new IntersectionObserver((entries, obs) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            document.querySelectorAll('.skill-bar').forEach(bar => {
-              const w = bar.getAttribute('data-width') || '70%';
-              bar.style.width = w;
-            });
-            obs.unobserve(entry.target); // animate once
-          }
-        });
-      }, { threshold: 0.18 });
-
-      skillObserver.observe(skillsSection);
-    }
-
-    /* ---------- Small improvement: close mobile menu when clicking outside content (optional) ---------- */
-    mobileMenu.addEventListener('click', (e) => {
-      if (e.target === mobileMenu) closeMobileMenu();
-    });
-
-    /* ---------- Smoothly collapse project images on very narrow screens if needed ---------- */
-    // (No extra JS required — handled with responsive img classes)
-  </script>
+  <script src="assets/portfolio-data.js"></script>
+  <script src="assets/app.js"></script>
 </body>
 </html>
