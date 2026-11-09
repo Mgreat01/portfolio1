@@ -131,10 +131,6 @@ footer a { overflow-wrap:anywhere; }
 @media(max-width:380px) { .hero-actions { flex-direction:column; } .hero-bottom { align-items:start; flex-direction:column; } .showcase-stack>div { font-size:.6rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
 /* Finitions : hiérarchie des compétences et interactions au clavier. */
-.skill-primary { padding:1rem; margin-inline:-.4rem; background:#edf1ff; border:1px solid #cdd7f5; border-radius:8px; }
-.skill-primary .skill-level-label { align-items:center; flex-wrap:wrap; gap:.5rem; }
-.skill-primary .skill-level-label>span { font-weight:700; color:#29479b; }
-.skill-level-label .primary-badge { color:#3f428b; background:white; padding:.3rem .5rem; border-radius:5px; font-family:inherit; font-weight:600; font-size:.6rem; }
 .showcase-stack strong { color:#344ba0; font-weight:750; }
 .profile-card { position:relative; transition:border-color .2s,transform .2s,box-shadow .2s; }
 .profile-card:focus-within,.profile-card:hover { border-color:#aebfe9; transform:translateY(-3px); box-shadow:0 8px 24px #233d7309; }

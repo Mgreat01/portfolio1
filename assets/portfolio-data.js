@@ -16,11 +16,10 @@ window.portfolioData = {
             "Laravel",
             "AdonisJS"
         ],
-        "primary": "Spring Boot",
         "levels": [
-            null,
-            90,
-            85
+            95,
+            75,
+            65
         ]
     },
     {
