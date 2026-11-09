@@ -5,7 +5,7 @@ window.portfolioData = {
   profiles: [
     { name: 'GitHub', label: '@Mgreat01', url: 'https://github.com/Mgreat01', description: 'Mes dépôts et projets de développement.' },
     { name: 'LinkedIn', label: 'Ephraim Monga', url: 'https://www.linkedin.com/in/ephraim%20monga', description: 'Mon parcours professionnel. Lien fourni dans le CV.' },
-    { name: 'Autre plateforme', label: 'À compléter', url: '', description: 'Un espace prêt pour un autre profil professionnel.' }
+    { name: 'GitLab', label: '@ephraimmonga5', url: 'https://gitlab.com/ephraimmonga5', description: 'Mes dépôts et contributions sur GitLab.' }
   ],
   skills: [
     {
