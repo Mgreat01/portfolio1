@@ -12,14 +12,15 @@ window.portfolioData = {
         "title": "Développement Backend",
         "description": "Création d'APIs robustes et sécurisées, conception de bases de données et développement de logique métier.",
         "items": [
+            "Spring Boot",
             "Laravel",
-            "AdonisJS",
-            "SpringBoot"
+            "AdonisJS"
         ],
+        "primary": "Spring Boot",
         "levels": [
+            null,
             90,
-            85,
-            45
+            85
         ]
     },
     {
