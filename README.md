@@ -37,7 +37,7 @@ Un score de 100 % signifie que ces critères sont remplis, même si certains lie
 ## Informations à compléter ou confirmer
 
 - Confirmer le lien LinkedIn repris exactement depuis le nouveau PDF : son adresse contient un espace encodé. Remplacer au besoin dans les données et les liens de navigation/contact/pied de page.
-- OpenSMR est ajouté : https://opensmr.netlify.app/. Compléter sa capture, le dépôt, votre rôle précis et les technologies complémentaires. Angular est identifiable dans le HTML public.
+- OpenSMR est ajouté : https://opensmr.netlify.app/. La première capture fournie est intégrée dans `assets/opensmr.png`. Compléter le dépôt, votre rôle précis et les technologies complémentaires. Angular est identifiable dans le HTML public.
 - Renseigner le dépôt RO–TG et les démos web/mobile du gestionnaire d’événements si disponibles.
 - Ajouter éventuellement d’autres profils et préciser votre rôle, les dates et les résultats de chaque projet.
 
@@ -51,6 +51,8 @@ Le formulaire utilise `mailto:` : il ouvre un brouillon dans la messagerie du vi
 node --check assets/app.js
 node --check assets/portfolio-data.js
 ```
+
+Spring Boot est mis en avant comme technologie la mieux maîtrisée, sans pourcentage inventé. Les autres niveaux sont les autoévaluations du portfolio initial. GitLab est renseigné : https://gitlab.com/ephraimmonga5.
 
 Les vérifications de cette intervention couvrent la syntaxe JavaScript, le rendu des composants via un DOM simulé, les critères du score, les ressources locales et la réponse HTTP. Le navigateur de prévisualisation était indisponible : la vérification visuelle réelle reste à faire à 375, 768 et 1440 px, avec navigation clavier, ouverture/fermeture du menu et téléchargement du CV.
 
