@@ -14,25 +14,17 @@ Ouvrir http://localhost:8000. Le chargement de Tailwind, Inter et Lucide nécess
 
 ## Modifier les contenus
 
-- `assets/portfolio-data.js` : compétences, projets et profils. Laisser les URL inconnues vides ; un état « non renseigné » apparaît. Les URL externes doivent commencer par HTTPS ou HTTP. Ajouter les captures au projet et renseigner leur chemin et leur texte alternatif.
+- `assets/portfolio-data.js` : compétences, projets et profils. Laisser les URL inconnues vides ; les boutons sans destination ne sont pas affichés. Les URL externes doivent commencer par HTTPS ou HTTP. Ajouter les captures au projet et renseigner leur chemin et leur texte alternatif.
 - `index.html` : présentation, parcours, coordonnées et structure des sections.
 - `assets/styles.css` : identité visuelle et adaptations responsive.
-- `assets/app.js` : composants, indicateurs, navigation et préparation de l’email.
+- `assets/app.js` : composants, navigation et préparation de l’email.
 - `assets/cv-ephraim-monga.pdf` : nouveau CV fourni le 7 novembre 2026. Remplacer ce fichier pour actualiser le téléchargement en conservant ce nom. `ECV.pdf` est conservé comme ancien document.
 
-Si vous renommez le PDF, mettre à jour les liens dans `index.html` et `cv` dans les données. Le CV doit réellement être livré avec le site : le score ne vérifie pas sa disponibilité réseau en continu.
+Si vous renommez le PDF, mettre à jour les liens dans `index.html`. Le CV doit être livré avec le site.
 
-## Indicateurs et score
+## Présentation publique
 
-Les chiffres proviennent des données locales ; ils ne représentent ni visiteurs, ni contributions GitHub, ni connexions authentifiées. Compétences dédupliquées sans distinction de casse.
-
-- Présentation : 20 points si renseignée.
-- Compétences : 20 points si au moins une est renseignée.
-- Projets : 10 points par projet avec titre, description, technologies et lien (démo ou dépôt), maximum 30 points pour trois projets.
-- CV : 20 points si configuré et fourni avec le site.
-- Profils : 5 points par lien renseigné, maximum 10 points pour deux profils.
-
-Un score de 100 % signifie que ces critères sont remplis, même si certains liens facultatifs manquent. Le calcul ne mesure pas la qualité du travail ou l’expertise.
+Les réalisations commencent par OpenSMR, également mis en avant dans l’accueil. Les liens non disponibles et les notes de maintenance ne sont pas affichés aux visiteurs. Le tableau de bord et le score de complétude ont été retirés.
 
 ## Informations à compléter ou confirmer
 
@@ -54,7 +46,7 @@ node --check assets/portfolio-data.js
 
 Spring Boot est mis en avant comme technologie la mieux maîtrisée, sans pourcentage inventé. Les autres niveaux sont les autoévaluations du portfolio initial. GitLab est renseigné : https://gitlab.com/ephraimmonga5.
 
-Les vérifications de cette intervention couvrent la syntaxe JavaScript, le rendu des composants via un DOM simulé, les critères du score, les ressources locales et la réponse HTTP. Le navigateur de prévisualisation était indisponible : la vérification visuelle réelle reste à faire à 375, 768 et 1440 px, avec navigation clavier, ouverture/fermeture du menu et téléchargement du CV.
+Les vérifications de cette intervention couvrent la syntaxe JavaScript, le rendu des composants via un DOM simulé, les ressources locales et la réponse HTTP. Le navigateur de prévisualisation était indisponible : la vérification visuelle réelle reste à faire à 375, 768 et 1440 px, avec navigation clavier, ouverture/fermeture du menu et téléchargement du CV.
 
 Le projet reste dans son dépôt local ; aucune nouvelle plateforme d’hébergement n’a été configurée.
 
