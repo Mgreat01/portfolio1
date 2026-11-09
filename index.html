@@ -34,7 +34,7 @@
       </a>
 
       <!-- Desktop links -->
-      <ul class="hidden md:flex gap-8 font-medium items-center">
+      <ul class="desktop-nav hidden md:flex gap-8 font-medium items-center">
         <li><a href="#about" class="nav-link hover:text-blue-600 transition">À propos</a></li>
         <li><a href="#skills" class="nav-link hover:text-blue-600 transition">Compétences</a></li>
         <li><a href="#projects" class="nav-link hover:text-blue-600 transition">Projets</a></li>
@@ -72,40 +72,47 @@
 
   <main id="main">
   <!-- Hero -->
-  <section class="hero relative min-h-[78vh] flex flex-col justify-center items-center text-center bg-gradient-to-br from-gray-900 to-blue-900 text-white pt-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="mb-6">
-        <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 p-1">
-          <div class="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
-            <span class="text-3xl sm:text-4xl font-bold">EM</span>
-          </div>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="location-dot" aria-hidden="true"></span> KINSHASA, RDC · PORTFOLIO</p>
+        <p class="hero-name">MONGA MBAKA EPHRAIM</p>
+        <h1 id="hero-title">Développeur<br><span>Web & Mobile.</span></h1>
+        <p class="hero-intro">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">Voir mes projets <span aria-hidden="true">↗</span></a>
+          <a href="assets/cv-ephraim-monga.pdf" download class="btn-outline">Télécharger mon CV <span aria-hidden="true">↓</span></a>
         </div>
+        <div class="hero-socials"><a href="https://github.com/Mgreat01" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="#contact">Discutons de votre projet →</a></div>
       </div>
-
-      <p class="eyebrow">KINSHASA · DÉVELOPPEMENT FULL-STACK</p>
-      <h1 class="text-2xl sm:text-3xl md:text-5xl font-black mb-3 leading-tight">MONGA MBAKA EPHRAIM</h1>
-      <div class="w-20 sm:w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto my-4 rounded-full"></div>
-      <p class="text-base sm:text-lg text-blue-100 mb-8 max-w-xl mx-auto">Développeur Web & Mobile passionné, créant des solutions digitales performantes et élégantes</p>
-
-      <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="#projects" class="btn-primary inline-block px-6 py-3 rounded-full font-semibold text-white" style="background: linear-gradient(90deg,var(--primary),var(--secondary));">Voir mes projets</a>
-        <a href="assets/cv-ephraim-monga.pdf" download class="btn-outline inline-block px-6 py-3 rounded-full font-semibold border-2 border-white/30 text-white">Télécharger mon CV</a>
+      <div class="hero-showcase" aria-label="Aperçu d’un projet et technologies utilisées">
+        <div class="showcase-top"><span class="showcase-monogram">EM<span>.</span></span><span>DU CODE AUX IDÉES CONCRÈTES</span></div>
+        <a class="showcase-project" href="https://ro-tg.vercel.app/exercices.html" target="_blank" rel="noopener noreferrer">
+          <div class="window-bar" aria-hidden="true"><span></span><span></span><span></span><b>ro-tg.vercel.app</b></div>
+          <img src="graph.png" alt="Aperçu du site d’exercices de recherche opérationnelle et théorie des graphes" width="720" height="440" fetchpriority="high">
+          <div class="showcase-caption"><span>Site d’exercices RO & TG</span><span aria-hidden="true">↗</span></div>
+        </a>
+        <div class="showcase-stack"><span>MA BOÎTE À OUTILS</span><div>Laravel <b>/</b> Angular <b>/</b> Flutter <b>/</b> AdonisJS</div></div>
       </div>
     </div>
-
-    <div class="absolute bottom-6 animate-bounce">
-      <a href="#about" aria-label="Aller à la section À propos">
-        <i data-lucide="chevron-down" class="w-7 h-7 text-white"></i>
-      </a>
-    </div>
+    <div class="hero-bottom"><span>WEB · BACKEND · MOBILE</span><a href="#about">Découvrir mon univers <span aria-hidden="true">↓</span></a></div>
   </section>
+
+  <!-- Projets -->
+  <section id="projects" class="py-16 max-w-6xl mx-auto px-6">
+    <p class="eyebrow">01 / QUELQUES RÉALISATIONS</p><h2 class="text-2xl sm:text-3xl md:text-4xl font-black section-title">Mes Projets<span class="title-dot">.</span></h2>
+    <p class="text-base sm:text-lg text-gray-600 max-w-2xl mt-2">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
+
+    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"></div>
+  </section>
+
 
   <!-- À propos -->
   <section id="about" class="py-16 sm:py-20 max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">À propos de moi</h2>
+    <p class="eyebrow">02 / DERRIÈRE LE CODE</p><h2 class="text-2xl sm:text-3xl md:text-4xl font-black section-title">À propos de moi<span class="title-dot">.</span></h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-10">
-      <aside class="profile-note"><span class="eyebrow">DU BESOIN À L’APPLICATION</span><h3>Web, mobile<br>et côté serveur.</h3><p>Basé à Kinshasa · RDC</p><p>Laravel, Angular, Flutter et AdonisJS.</p><a href="assets/cv-ephraim-monga.pdf" download>Mon parcours en PDF ↗</a></aside>
+      <aside class="profile-note"><span class="profile-initials" aria-hidden="true">EM<span>.</span></span><span class="eyebrow">DÉVELOPPEUR FULL-STACK</span><h3>La technique,<br>avec un sens créatif.</h3><p>Kinshasa, RDC</p><p>Laravel, Angular, Flutter et AdonisJS.</p><a href="assets/cv-ephraim-monga.pdf" download>Mon parcours en PDF ↗</a></aside>
 
       <div>
         <p class="text-base sm:text-lg text-gray-600 mb-4">
@@ -128,26 +135,19 @@
     </div>
   </section>
 
-  <section id="dashboard" class="dashboard max-w-6xl mx-auto px-6 py-16" aria-labelledby="dashboard-title">
-    <div class="section-heading"><div><p class="eyebrow">LE PORTFOLIO EN CLAIR</p><h2 id="dashboard-title" class="text-3xl font-black">Tableau de bord</h2></div><p>Un aperçu des contenus présentés ici.</p></div>
-    <div id="portfolio-stats" class="stats-grid"></div>
-    <div class="completion-panel"><div><h3>Complétude du portfolio</h3><p id="completion-description"></p><progress id="completion-progress" max="100" value="0">0 %</progress></div><details><summary>Comment le score est-il calculé ?</summary><ul id="completion-criteria"></ul><p>Ce score mesure les contenus renseignés, pas un niveau d’expertise ni l’activité sur les plateformes.</p></details></div>
-  </section>
   <!-- Compétences -->
   <section id="skills" class="py-16 bg-gray-100">
     <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Compétences</h2>
+      <p class="eyebrow">03 / MON SAVOIR-FAIRE</p><h2 class="text-2xl sm:text-3xl md:text-4xl font-black section-title">Mes Compétences<span class="title-dot">.</span></h2>
 
       <div id="skills-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"></div>
     </div>
   </section>
 
-  <!-- Projets -->
-  <section id="projects" class="py-16 max-w-6xl mx-auto px-6">
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-black text-center section-title mx-auto">Mes Projets</h2>
-    <p class="text-base sm:text-lg text-gray-600 text-center max-w-2xl mx-auto mt-2">Découvrez une sélection de mes réalisations techniques et professionnelles</p>
-
-    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8"></div>
+  <section id="dashboard" class="dashboard max-w-6xl mx-auto px-6 py-16" aria-labelledby="dashboard-title">
+    <div class="section-heading"><div><p class="eyebrow">LE PORTFOLIO EN CLAIR</p><h2 id="dashboard-title" class="text-3xl font-black">Tableau de bord</h2></div><p>Un aperçu des contenus présentés ici.</p></div>
+    <div id="portfolio-stats" class="stats-grid"></div>
+    <div class="completion-panel"><div><h3>Complétude du portfolio</h3><p id="completion-description"></p><progress id="completion-progress" max="100" value="0">0 %</progress></div><details><summary>Comment le score est-il calculé ?</summary><ul id="completion-criteria"></ul><p>Ce score mesure les contenus renseignés, pas un niveau d’expertise ni l’activité sur les plateformes.</p></details></div>
   </section>
 
   <section id="profiles" class="max-w-6xl mx-auto px-6 py-16"><p class="eyebrow">RETROUVONS-NOUS</p><h2 class="text-3xl font-black">Mes profils professionnels</h2><p class="section-intro">Code, parcours et liens utiles réunis au même endroit.</p><div id="profiles-grid" class="profiles-grid"></div><p class="muted">Liens externes uniquement : aucune synchronisation automatique ni accès aux comptes.</p></section>
@@ -155,7 +155,7 @@
   <section id="contact" class="py-16 bg-gradient-to-br from-gray-900 to-blue-900 text-white">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10">
       <div>
-        <h2 class="text-2xl md:text-3xl font-black mb-4">Contactez-moi</h2>
+        <p class="eyebrow">ET SI ON TRAVAILLAIT ENSEMBLE ?</p><h2 class="text-2xl md:text-3xl font-black mb-4">Contactez-moi<span class="title-dot">.</span></h2>
         <p class="text-base text-blue-100 mb-6">Je suis disponible pour discuter de vos projets et idées. N'hésitez pas à me contacter !</p>
 
         <div class="space-y-4 mb-6">
@@ -197,7 +197,7 @@
           <a href="https://www.linkedin.com/in/ephraim%20monga" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="w-11 h-11 flex items-center justify-center bg-blue-700 rounded-lg hover:bg-blue-600 transition">
             <i data-lucide="linkedin" class="w-5 h-5"></i>
           </a>
-          <span class="muted">Autres profils à renseigner</span>
+
         </div>
       </div>
 
@@ -250,7 +250,7 @@
           <div class="flex gap-4 justify-center md:justify-start">
             <a href="https://github.com/Mgreat01" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="text-gray-400 hover:text-white transition"><i data-lucide="github" class="w-6 h-6"></i></a>
             <a href="https://www.linkedin.com/in/ephraim%20monga" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-gray-400 hover:text-white transition"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-            <span class="muted">Autres profils à renseigner</span>
+
           </div>
         </div>
       </div>
