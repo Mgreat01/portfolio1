@@ -1,4 +1,4 @@
-﻿/* Identité du portfolio : bleu et violet. Les composants restent en CSS natif. */
+/* Identité du portfolio : bleu et violet. Les composants restent en CSS natif. */
 :root { --primary:#3158d5; --secondary:#7861cf; --ink:#17243b; --muted:#57657b; --line:#dfe5ee; --surface:#f5f7fb; --dark:#101d35; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:6rem; }
@@ -55,7 +55,7 @@ header nav>a>span { padding:9px!important; border-radius:10px!important; }
 .showcase-stack b { color:#9aa7bd; padding:0 .35rem; font-weight:400; }
 .hero-bottom { max-width:1152px; margin:auto; display:flex; justify-content:space-between; align-items:center; gap:1rem; padding:1.3rem 0; border-top:1px solid #dce2ee; color:#647089; font-family:ui-monospace,monospace; font-size:.6rem; letter-spacing:.07em; }
 .hero-bottom a { display:flex; gap:1rem; }
-#projects,#about,#dashboard,#profiles { max-width:1200px; padding-top:5.5rem; padding-bottom:5.5rem; }
+#projects,#about,#profiles { max-width:1200px; padding-top:5.5rem; padding-bottom:5.5rem; }
 .section-title { letter-spacing:-.055em; line-height:1.15; display:block; margin-bottom:1rem; }
 #projects-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:2rem; margin-top:2.5rem; }
 .project-card { border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 4px 14px #17243b04; transition:transform .25s,box-shadow .25s; }
@@ -104,20 +104,7 @@ meter::-moz-meter-bar { background:linear-gradient(90deg,#4166d6,#8a77cd); }
 .section-heading h2,#profiles h2 { letter-spacing:-.045em; }
 .section-heading>p,.section-intro,.muted { color:var(--muted); font-size:.8rem; line-height:1.8; }
 .section-intro { margin:1rem 0 2rem; }
-.stats-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border:1px solid var(--line); border-radius:12px; background:white; }
-.stat { padding:1.5rem; border-right:1px solid var(--line); }
-.stat:last-child { border:0; }
-.stat strong { display:block; font-size:2.4rem; letter-spacing:-.06em; font-weight:650; color:#2e4590; }
-.stat span { font-size:.7rem; color:var(--muted); }
-.completion-panel { margin-top:1rem; padding:1.5rem; border:1px solid var(--line); border-radius:12px; background:#f6f8fc; }
-.completion-panel h3 { font-size:.85rem; font-weight:650; margin-bottom:.5rem; }
-.completion-panel p,.completion-panel li { font-size:.75rem; color:var(--muted); line-height:1.9; }
-progress { display:block; width:100%; height:7px; margin:1rem 0; accent-color:var(--primary); border:0; border-radius:9px; overflow:hidden; }
-progress::-webkit-progress-bar { background:#dce3f0; }
-progress::-webkit-progress-value { background:linear-gradient(90deg,var(--primary),var(--secondary)); }
-summary { cursor:pointer; font-size:.75rem; font-weight:600; padding:.5rem 0; }
-details ul { padding:1rem 0 1rem 1.2rem; list-style:disc; }
-#profiles { padding-top:0; }
+#profiles { padding-top:3.5rem; }
 .profiles-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; margin-bottom:1rem; }
 .profile-card { padding:1.5rem; border:1px solid var(--line); border-radius:12px; background:white; }
 .profile-card h3 { margin-top:0; font-size:1rem; }
@@ -140,7 +127,7 @@ footer h3 { font-size:1rem!important; letter-spacing:-.03em; }
 footer h4 { font-size:.8rem!important; }
 footer a { overflow-wrap:anywhere; }
 @media(min-width:768px) and (max-width:1023px) { .hero-layout { gap:2rem; } .desktop-nav { gap:1rem!important; font-size:.7rem; } .hero-actions { flex-direction:column; align-items:start; } #about>div,#contact>div { gap:2rem; } }
-@media(max-width:767px) { .hero { padding:8rem 1.5rem 0; } .hero-layout { grid-template-columns:1fr; gap:3rem; padding-bottom:2.5rem; } .hero h1 { font-size:clamp(2.7rem,10vw,4rem); } .hero-intro { font-size:.9rem; } .hero-showcase { max-width:500px; width:100%; margin:auto; } .hero-bottom { font-size:.5rem; letter-spacing:0; } .hero-bottom>a { gap:.4rem; } #projects,#about,#dashboard,#profiles { padding-top:3.5rem; padding-bottom:3.5rem; } #projects-grid { grid-template-columns:1fr; gap:1.5rem; } #about>div { gap:2rem; } .profile-note { padding:2rem; } .profile-initials { margin-bottom:2rem; } #skills,#contact { padding:3.5rem 0; } .section-heading { display:block; } .section-heading>p { margin-top:1rem; } .stats-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } .stat { padding:1rem; border-bottom:1px solid var(--line); } .stat:nth-child(2) { border-right:0; } .stat:nth-child(3) { border-bottom:0; } .stat strong { font-size:2rem; } .profiles-grid { grid-template-columns:1fr; } #profiles { padding-top:0; } #contact>div { gap:2rem; } #contact h2 { font-size:2.2rem; } }
+@media(max-width:767px) { .hero { padding:8rem 1.5rem 0; } .hero-layout { grid-template-columns:1fr; gap:3rem; padding-bottom:2.5rem; } .hero h1 { font-size:clamp(2.7rem,10vw,4rem); } .hero-intro { font-size:.9rem; } .hero-showcase { max-width:500px; width:100%; margin:auto; } .hero-bottom { font-size:.5rem; letter-spacing:0; } .hero-bottom>a { gap:.4rem; } #projects,#about,#profiles { padding-top:3.5rem; padding-bottom:3.5rem; } #projects-grid { grid-template-columns:1fr; gap:1.5rem; } #about>div { gap:2rem; } .profile-note { padding:2rem; } .profile-initials { margin-bottom:2rem; } #skills,#contact { padding:3.5rem 0; } .section-heading { display:block; } .section-heading>p { margin-top:1rem; } .profiles-grid { grid-template-columns:1fr; } #profiles { padding-top:3.5rem; } #contact>div { gap:2rem; } #contact h2 { font-size:2.2rem; } }
 @media(max-width:380px) { .hero-actions { flex-direction:column; } .hero-bottom { align-items:start; flex-direction:column; } .showcase-stack>div { font-size:.6rem; } }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } }
 /* Finitions : hiérarchie des compétences et interactions au clavier. */
