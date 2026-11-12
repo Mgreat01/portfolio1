@@ -25,6 +25,24 @@
     }
   });
   matchMedia('(min-width: 768px)').addEventListener('change', event => { if (event.matches) closeMenu(false); });
+  const sectionLinks = [...document.querySelectorAll('.nav-link, .mobile-link')];
+  if ('IntersectionObserver' in window) {
+    const visibleSections = new Map();
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) visibleSections.set(entry.target.id, entry.target);
+        else visibleSections.delete(entry.target.id);
+      });
+      const current = [...visibleSections.values()].sort((a, b) =>
+        Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top)
+      )[0];
+      sectionLinks.forEach(link => {
+        if (current && link.hash === `#${current.id}`) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
+    document.querySelectorAll('main section[id]').forEach(section => sectionObserver.observe(section));
+  }
   document.querySelector('#contact-form').addEventListener('submit', event => {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
