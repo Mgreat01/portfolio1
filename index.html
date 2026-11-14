@@ -254,7 +254,23 @@
     </div>
   </footer>
 
+  <dialog id="project-gallery" class="gallery-dialog" aria-labelledby="gallery-title">
+    <div class="gallery-header">
+      <div><p class="eyebrow">EN IMAGES</p><h2 id="gallery-title"></h2></div>
+      <button type="button" id="gallery-close" class="gallery-close" aria-label="Fermer la galerie" autofocus>Fermer <span aria-hidden="true">×</span></button>
+    </div>
+    <figure class="gallery-figure">
+      <div class="gallery-stage"><img id="gallery-image" src="assets/opensmr.png" alt=""></div>
+      <figcaption><span id="gallery-caption"></span><span id="gallery-count" role="status" aria-live="polite" aria-atomic="true"></span></figcaption>
+    </figure>
+    <div class="gallery-navigation" role="group" aria-label="Navigation entre les captures">
+      <button type="button" id="gallery-prev" aria-label="Capture précédente">← Précédente</button>
+      <button type="button" id="gallery-next" aria-label="Capture suivante">Suivante →</button>
+    </div>
+    <div id="gallery-thumbnails" class="gallery-thumbnails" role="group" aria-label="Choisir une capture"></div>
+  </dialog>
   <script src="assets/portfolio-data.js"></script>
   <script src="assets/app.js"></script>
+  <script src="assets/gallery.js"></script>
 </body>
 </html>
