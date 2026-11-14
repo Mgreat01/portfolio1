@@ -105,7 +105,7 @@ window.portfolioData = {
       description: 'Application mobile pour rechercher des profils GitHub, explorer leurs projets et consulter leur activité. Des filtres par langage et localisation facilitent la découverte, avec une interface claire ou sombre.',
       category: 'Application mobile · Outils développeur', technologies: [],
       image: 'assets/projects/devradar-profil-clair.jpeg', alt: 'Profil GitHub et aperçu de son activité dans DevRadar', contain: true,
-      live: '', repository: '',
+      live: '', repository: 'https://github.com/Mgreat01/devradar_mobile',
       gallery: [
         { src: 'assets/projects/devradar-profil-clair.jpeg', label: 'Thème clair · Profil GitHub', format: 'mobile' },
         { src: 'assets/projects/devradar-profil-sombre.jpeg', label: 'Thème sombre · Profil GitHub', format: 'mobile' },
