@@ -52,7 +52,25 @@ window.portfolioData = {
     }
 ],
   projects: [
-    { title: 'OpenSMR', platform: 'web', featured: true, description: 'Application de gestion des risques et de conformité ISO 27001 à laquelle j’ai contribué.', category: 'Application web · Gestion des risques', technologies: ['Angular'], image: 'assets/opensmr.png', alt: 'Page de connexion OpenSMR et présentation des fonctionnalités de gestion des risques', live: 'https://opensmr.netlify.app/', repository: '' },
+    {
+      title: 'OpenSMR', platform: 'web', featured: true,
+      description: 'Application de gestion des risques et de conformité ISO 27001 à laquelle j’ai contribué. Inventaire des actifs, matrice des risques et déclaration d’applicabilité sont réunis dans un même espace.',
+      category: 'Application web · Gestion des risques', technologies: ['Angular'],
+      image: 'assets/projects/opensmr-tableau-de-bord.png', alt: 'Vue d’ensemble OpenSMR avec les indicateurs du périmètre et la matrice des risques',
+      live: 'https://opensmr.netlify.app/', repository: '',
+      gallery: [
+        { src: 'assets/projects/opensmr-tableau-de-bord.png', label: 'Vue d’ensemble · Tableau de bord', format: 'web' },
+        { src: 'assets/projects/opensmr-matrice-risques.png', label: 'Analyse · Matrice des risques', format: 'web' },
+        { src: 'assets/projects/opensmr-ajout-actif.png', label: 'Inventaire · Ajout d’un actif', format: 'web' },
+        { src: 'assets/projects/opensmr-scenario-risque.png', label: 'Risques · Création d’un scénario', format: 'web' },
+        { src: 'assets/projects/opensmr-mesures-iso.png', label: 'Référentiel · Mesures ISO 27001', format: 'web' },
+        { src: 'assets/projects/opensmr-declaration-applicabilite.png', label: 'Conformité · Déclaration d’applicabilité', format: 'web' },
+        { src: 'assets/projects/opensmr-sentinel.png', label: 'Sentinel · Aide à l’évaluation des risques', format: 'web' },
+        { src: 'assets/projects/opensmr-tableau-sombre.png', label: 'Thème sombre · Tableau de bord', format: 'web' },
+        { src: 'assets/projects/opensmr-actifs-sombre.png', label: 'Thème sombre · Inventaire des actifs', format: 'web' },
+        { src: 'assets/opensmr.png', label: 'Connexion · Accès à OpenSMR', format: 'web' }
+      ]
+    },
     {
       title: 'GraphX Lab — Web', platform: 'web',
       description: 'Cours, quiz et laboratoire interactif pour explorer la recherche opérationnelle et la théorie des graphes. Une version mobile complète cette plateforme web.',
