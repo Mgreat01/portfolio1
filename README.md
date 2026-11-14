@@ -7,7 +7,8 @@ Mon portfolio de développeur web et mobile, basé à Kinshasa. Il rassemble mes
 ## Les projets
 
 - **[OpenSMR](https://opensmr.netlify.app/)** — gestion des risques et conformité ISO 27001.
-- **[GraphX Lab](https://ro-tg.vercel.app/)** — cours, quiz et laboratoire de graphes, sur le web et sur mobile.
+- **[GraphX Lab](https://ro-tg.vercel.app/)** — version web avec cours, quiz et laboratoire de graphes.
+- **[GraphX Lab mobile](https://github.com/Mgreat01/roTGMobi)** ? application Flutter avec cours, quiz et construction interactive de graphes.
 - **DevRadar** — recherche de profils GitHub, découverte de projets et consultation de l’activité, en thème clair ou sombre.
 - **[Gestionnaire d’événements](https://github.com/Mgreat01/eventfront)** — application web avec Laravel, Angular et MySQL.
 - **[Version mobile](https://github.com/Mgreat01/projet-git)** — application Flutter reliée au backend Laravel.
@@ -28,7 +29,7 @@ assets/
   projects/                      Captures de GraphX Lab et DevRadar
 ```
 
-Chaque projet dispose d’une couverture. Les séries de captures se parcourent dans une galerie avec miniatures, boutons précédent/suivant et navigation au clavier. Les écrans web et mobile de GraphX Lab sont réunis dans la même fiche. Les anciennes captures restent à la racine du dépôt.
+Chaque projet dispose d’une couverture. Les séries de captures se parcourent dans une galerie avec miniatures, boutons précédent/suivant et navigation au clavier. Les réalisations sont réparties entre projets web et applications mobiles. Chaque version de GraphX Lab possède sa propre carte et sa propre galerie ; la carte mobile donne accès au dépôt du code source. Les anciennes captures restent à la racine du dépôt.
 
 Les cartes affichent les liens disponibles dans les données. Le formulaire de contact prépare un email dans la messagerie du visiteur.
 
