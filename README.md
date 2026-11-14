@@ -7,7 +7,8 @@ Mon portfolio de développeur web et mobile, basé à Kinshasa. Il rassemble mes
 ## Les projets
 
 - **[OpenSMR](https://opensmr.netlify.app/)** — gestion des risques et conformité ISO 27001.
-- **[RO & TG](https://ro-tg.vercel.app/exercices.html)** — exercices de recherche opérationnelle et de théorie des graphes.
+- **[GraphX Lab](https://ro-tg.vercel.app/)** — cours, quiz et laboratoire de graphes, sur le web et sur mobile.
+- **DevRadar** — recherche de profils GitHub, découverte de projets et consultation de l’activité, en thème clair ou sombre.
 - **[Gestionnaire d’événements](https://github.com/Mgreat01/eventfront)** — application web avec Laravel, Angular et MySQL.
 - **[Version mobile](https://github.com/Mgreat01/projet-git)** — application Flutter reliée au backend Laravel.
 
@@ -20,12 +21,16 @@ index.html                       Sections, présentation et contact
 assets/
   portfolio-data.js              Projets, compétences et profils
   app.js                         Rendu des cartes, navigation et formulaire
+  gallery.js                     Consultation des captures des projets
   styles.css                     Styles et adaptations aux petits écrans
   cv-ephraim-monga.pdf            CV téléchargeable
   opensmr.png                    Capture d’OpenSMR
+  projects/                      Captures de GraphX Lab et DevRadar
 ```
 
-Les autres captures sont à la racine du dépôt. Les cartes affichent les liens disponibles dans les données. Le formulaire de contact prépare un email dans la messagerie du visiteur.
+Chaque projet dispose d’une couverture. Les séries de captures se parcourent dans une galerie avec miniatures, boutons précédent/suivant et navigation au clavier. Les écrans web et mobile de GraphX Lab sont réunis dans la même fiche. Les anciennes captures restent à la racine du dépôt.
+
+Les cartes affichent les liens disponibles dans les données. Le formulaire de contact prépare un email dans la messagerie du visiteur.
 
 ## En local
 
@@ -40,4 +45,5 @@ Vérification de la syntaxe JavaScript :
 ```sh
 node --check assets/app.js
 node --check assets/portfolio-data.js
+node --check assets/gallery.js
 ```
